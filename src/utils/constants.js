@@ -67,3 +67,47 @@ export const CATEGORIES_DOCUMENT = [
   { value: "rapport", label: "Rapport", icon: "📊", color: "#7C3AED", bg: "#F5F3FF" },
   { value: "autre", label: "Autre", icon: "📄", color: "#64748b", bg: "#F1F5F9" },
 ];
+export const CATEGORIES_FINANCE = {
+  revenu: [
+    { value: "facture", label: "Facture client", icon: "🧾" },
+    { value: "vente", label: "Vente produit", icon: "🛒" },
+    { value: "service", label: "Prestation service", icon: "🔧" },
+    { value: "autre_revenu", label: "Autre revenu", icon: "💰" },
+  ],
+  depense: [
+    { value: "salaire", label: "Salaire", icon: "👥" },
+    { value: "achat", label: "Achat fournisseur", icon: "📦" },
+    { value: "fourniture", label: "Fournitures", icon: "🖊️" },
+    { value: "maintenance", label: "Maintenance", icon: "🔩" },
+    { value: "loyer", label: "Loyer", icon: "🏢" },
+    { value: "autre_depense", label: "Autre dépense", icon: "💸" },
+  ],
+};
+
+export const STATUTS_TRANSACTION = [
+  { value: "paye", label: "Payé", color: "#059669", bg: "#ECFDF5" },
+  { value: "en_attente", label: "En attente", color: "#D97706", bg: "#FFFBEB" },
+  { value: "annule", label: "Annulé", color: "#DC2626", bg: "#FEF2F2" },
+];
+export const TYPES_CONGE = [
+  { value: "annuel", label: "Congé annuel", icon: "🏖️" },
+  { value: "maladie", label: "Congé maladie", icon: "🏥" },
+  { value: "maternite", label: "Congé maternité", icon: "👶" },
+  { value: "paternite", label: "Congé paternité", icon: "👨‍👶" },
+  { value: "exceptionnel", label: "Congé exceptionnel", icon: "⭐" },
+  { value: "sans_solde", label: "Congé sans solde", icon: "📋" },
+];
+
+export const STATUTS_CONGE = [
+  { value: "en_attente", label: "En attente", color: "#D97706", bg: "#FFFBEB" },
+  { value: "approuve", label: "Approuvé", color: "#059669", bg: "#ECFDF5" },
+  { value: "refuse", label: "Refusé", color: "#DC2626", bg: "#FEF2F2" },
+  { value: "annule", label: "Annulé", color: "#64748b", bg: "#F1F5F9" },
+];
+
+export const STATUTS_PRESENCE = [
+  { value: "present", label: "Présent", color: "#059669", bg: "#ECFDF5" },
+  { value: "absent", label: "Absent", color: "#DC2626", bg: "#FEF2F2" },
+  { value: "retard", label: "En retard", color: "#D97706", bg: "#FFFBEB" },
+  { value: "conge", label: "En congé", color: "#4F46E5", bg: "#EEF2FF" },
+];

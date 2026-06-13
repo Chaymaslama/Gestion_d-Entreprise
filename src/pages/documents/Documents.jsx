@@ -36,7 +36,6 @@ export default function Documents() {
 
   return (
     <div>
-      {/* Stats catégories */}
       <div style={styles.catGrid}>
         {CATEGORIES_DOCUMENT.map((cat) => {
           const count = documents.filter((d) => d.categorie === cat.value).length;
@@ -62,7 +61,6 @@ export default function Documents() {
         })}
       </div>
 
-      {/* Toolbar */}
       <div style={styles.toolbar}>
         <input
           style={styles.search}
@@ -77,7 +75,6 @@ export default function Documents() {
 
       <p style={styles.count}>{filtered.length} document(s)</p>
 
-      {/* Grille de documents */}
       {filtered.length === 0 ? (
         <div style={styles.empty}>
           <p style={styles.emptyIcon}>📂</p>
@@ -88,13 +85,14 @@ export default function Documents() {
         </div>
       ) : (
         <div style={styles.docGrid}>
-          {filtered.map((doc) => {
-            const cat = CATEGORIES_DOCUMENT.find((c) => c.value === doc.categorie);
+          {filtered.map((document) => {
+            const cat = CATEGORIES_DOCUMENT.find((c) => c.value === document.categorie);
+            const viewUrl = document.fichierURL;
+            const fileName = document.fichierNom;
             return (
-              <div key={doc.id} style={styles.docCard}>
-                {/* En-tête */}
+              <div key={document.id} style={styles.docCard}>
                 <div style={styles.docHeader}>
-                  <span style={styles.fileIcon}>{getFileIcon(doc.fichierType)}</span>
+                  <span style={styles.fileIcon}>{getFileIcon(document.fichierType)}</span>
                   <span style={{
                     ...styles.catBadge,
                     background: cat?.bg || "#f1f5f9",
@@ -104,38 +102,33 @@ export default function Documents() {
                   </span>
                 </div>
 
-                {/* Infos */}
-                <p style={styles.docNom}>{doc.nom}</p>
-                {doc.description && (
-                  <p style={styles.docDesc}>{doc.description}</p>
+                <p style={styles.docNom}>{document.nom}</p>
+                {document.description && (
+                  <p style={styles.docDesc}>{document.description}</p>
                 )}
                 <p style={styles.docMeta}>
-                  {doc.fichierNom} · {formatFileSize(doc.fichierTaille || 0)}
+                  {fileName} · {formatFileSize(document.fichierTaille || 0)}
                 </p>
                 <p style={styles.docDate}>
-                  {doc.createdAt?.toDate?.()?.toLocaleDateString("fr-FR") || "—"}
+                  {document.createdAt?.toDate?.()?.toLocaleDateString("fr-FR") || "—"}
                 </p>
 
-                {/* Actions */}
                 <div style={styles.docActions}>
-                  
-                    href={doc.fichierURL}
-                    target="_blank"
-                    rel="noreferrer"
+                  <button
                     style={styles.viewBtn}
+                    onClick={() => window.open(viewUrl, "_blank")}
                   >
                     👁️ Voir
-                  </a>
-                  
-                    href={doc.fichierURL}
-                    download={doc.fichierNom}
+                  </button>
+                  <button
                     style={styles.downloadBtn}
+                    onClick={() => window.open(viewUrl, "_blank")}
                   >
                     ⬇️ Télécharger
-                  </a>
+                  </button>
                   <button
                     style={styles.deleteBtn}
-                    onClick={() => handleDelete(doc.id, doc.fichierURL)}
+                    onClick={() => handleDelete(document.id, viewUrl)}
                   >
                     🗑️
                   </button>
@@ -161,7 +154,7 @@ const styles = {
   catCount: { margin: 0, fontSize: "20px", fontWeight: 700 },
   toolbar: { display: "flex", gap: "12px", marginBottom: "1rem", flexWrap: "wrap" },
   search: { flex: 1, minWidth: "200px", padding: "10px 14px", borderRadius: "8px", border: "1px solid #e2e8f0", fontSize: "14px" },
-  uploadBtn: { padding: "10px 18px", background: "#4F46E5", color: "#fff", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: 600, fontSize: "14px", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "6px" },
+  uploadBtn: { padding: "10px 18px", background: "#4F46E5", color: "#fff", border: "none", borderRadius: "8px", cursor: "pointer", fontWeight: 600, fontSize: "14px", display: "inline-flex", alignItems: "center", gap: "6px" },
   count: { fontSize: "13px", color: "#64748b", marginBottom: "1rem" },
   docGrid: { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1rem" },
   docCard: { background: "#fff", borderRadius: "12px", border: "1px solid #e2e8f0", padding: "1.25rem", display: "flex", flexDirection: "column", gap: "8px" },
@@ -173,8 +166,8 @@ const styles = {
   docMeta: { margin: 0, fontSize: "11px", color: "#94a3b8" },
   docDate: { margin: 0, fontSize: "11px", color: "#94a3b8" },
   docActions: { display: "flex", gap: "8px", marginTop: "8px", alignItems: "center" },
-  viewBtn: { padding: "6px 12px", background: "#EEF2FF", color: "#4F46E5", borderRadius: "6px", fontSize: "12px", fontWeight: 600, textDecoration: "none" },
-  downloadBtn: { padding: "6px 12px", background: "#ECFDF5", color: "#059669", borderRadius: "6px", fontSize: "12px", fontWeight: 600, textDecoration: "none" },
+  viewBtn: { padding: "6px 12px", background: "#EEF2FF", color: "#4F46E5", borderRadius: "6px", fontSize: "12px", fontWeight: 600, border: "none", cursor: "pointer" },
+  downloadBtn: { padding: "6px 12px", background: "#ECFDF5", color: "#059669", borderRadius: "6px", fontSize: "12px", fontWeight: 600, border: "none", cursor: "pointer" },
   deleteBtn: { background: "none", border: "none", cursor: "pointer", fontSize: "16px", marginLeft: "auto" },
   empty: { textAlign: "center", padding: "4rem", color: "#94a3b8" },
   emptyIcon: { fontSize: "48px", margin: "0 0 1rem" },

@@ -15,6 +15,7 @@ const menuItems = [
   { path: "/finance", icon: "💰", label: "Finance" },
   { path: "/messages", icon: "💬", label: "Messagerie" },
   { path: "/settings", icon: "⚙️", label: "Paramètres" },
+  { path: "/hr", icon: "🧑‍💼", label: "RH" },
 ];
 
 export default function Layout({ children }) {

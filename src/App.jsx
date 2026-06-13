@@ -12,6 +12,9 @@ import Clients from "./pages/clients/Clients";
 import Products from "./pages/products/Products";
 import Orders from "./pages/orders/Orders";
 import Documents from "./pages/documents/Documents";
+import Finance from "./pages/finance/Finance";
+import Messages from "./pages/messages/Messages";
+import HR from "./pages/hr/HR";
 
 function PrivateLayout({ children }) {
   return (
@@ -42,9 +45,10 @@ export default function App() {
           <Route path="/orders" element={<PrivateLayout><Orders /></PrivateLayout>} />
           <Route path="/documents" element={<PrivateLayout><Documents /></PrivateLayout>} />
           <Route path="/projects" element={<PrivateLayout><h2>🗂️ Projets — bientôt</h2></PrivateLayout>} />
-          <Route path="/finance" element={<PrivateLayout><h2>💰 Finance — bientôt</h2></PrivateLayout>} />
-          <Route path="/messages" element={<PrivateLayout><h2>💬 Messagerie — bientôt</h2></PrivateLayout>} />
+          <Route path="/finance" element={<PrivateLayout><Finance /></PrivateLayout>} />
+          <Route path="/messages" element={<PrivateLayout><Messages /></PrivateLayout>} />
           <Route path="/settings" element={<PrivateLayout><h2>⚙️ Paramètres — bientôt</h2></PrivateLayout>} />
+          <Route path="/hr" element={<PrivateLayout><HR /></PrivateLayout>} />
 
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
