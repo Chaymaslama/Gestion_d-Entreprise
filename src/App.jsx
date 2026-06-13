@@ -7,6 +7,11 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import ResetPassword from "./pages/auth/ResetPassword";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Employees from "./pages/employees/Employees";
+import Clients from "./pages/clients/Clients";
+import Products from "./pages/products/Products";
+import Orders from "./pages/orders/Orders";
+import Documents from "./pages/documents/Documents";
 
 function PrivateLayout({ children }) {
   return (
@@ -30,12 +35,12 @@ export default function App() {
           <Route path="/dashboard" element={<PrivateLayout><Dashboard /></PrivateLayout>} />
 
           {/* Placeholder pages */}
-          <Route path="/employees" element={<PrivateLayout><h2>👥 Employés — bientôt</h2></PrivateLayout>} />
-          <Route path="/clients" element={<PrivateLayout><h2>🤝 Clients — bientôt</h2></PrivateLayout>} />
-          <Route path="/products" element={<PrivateLayout><h2>📦 Produits — bientôt</h2></PrivateLayout>} />
-          <Route path="/stock" element={<PrivateLayout><h2>🏭 Stock — bientôt</h2></PrivateLayout>} />
-          <Route path="/orders" element={<PrivateLayout><h2>🛒 Commandes — bientôt</h2></PrivateLayout>} />
-          <Route path="/documents" element={<PrivateLayout><h2>📄 Documents — bientôt</h2></PrivateLayout>} />
+          <Route path="/employees" element={<PrivateLayout><Employees /></PrivateLayout>} />
+          <Route path="/clients" element={<PrivateLayout><Clients /></PrivateLayout>} />
+          <Route path="/products" element={<PrivateLayout><Products /></PrivateLayout>} />
+          <Route path="/stock" element={<PrivateLayout><Products /></PrivateLayout>} />
+          <Route path="/orders" element={<PrivateLayout><Orders /></PrivateLayout>} />
+          <Route path="/documents" element={<PrivateLayout><Documents /></PrivateLayout>} />
           <Route path="/projects" element={<PrivateLayout><h2>🗂️ Projets — bientôt</h2></PrivateLayout>} />
           <Route path="/finance" element={<PrivateLayout><h2>💰 Finance — bientôt</h2></PrivateLayout>} />
           <Route path="/messages" element={<PrivateLayout><h2>💬 Messagerie — bientôt</h2></PrivateLayout>} />
